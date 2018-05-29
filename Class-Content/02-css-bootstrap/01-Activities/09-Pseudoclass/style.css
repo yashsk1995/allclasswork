@@ -1,0 +1,11 @@
+a:hover{
+    background: black;
+
+}
+a:active{
+    background: aqua;
+}
+
+a:focus{
+    background: red;
+}
