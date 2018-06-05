@@ -43,9 +43,15 @@
       // CREATE THE MISSING CODE HERE. Your code should add content to the random-number div.
       // ...
      $("#random-button").on("click",function(){
-        var printno= Math.floor((Math.random() * 1000) + 1);
+        // var printno = Math.floor((Math.random() + 1 )* 1e+8);
+        var printno = Math.random().toString().slice(2,11);
         console.log(printno);
-        $("#random-number").text(printno); 
+        var newh1=$("<h1>");
+        newh1.text(printno);
+        newh1.attr("class","text-center");
+
+        $("#random-number").prepend(newh1); 
+        
      });
 
     });

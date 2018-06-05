@@ -15,23 +15,65 @@
 
       // Create a Function called "adder" that take three arguments (x, y, z).
       // The function should add the arguments together, and log the result to the console.
+      var x=1;
+      var y=2;
+      var z=3;
+      function adder(a,b,c){
+        console.log(a + b +c);
+        
+      }
+      adder(x,y,z);
 
 
       // Create a Function called "multiplier" that takes three arguments (x, y, z).
       // The function should multiply the arguments, and log the result to the console.
-
+      var x=1;
+      var y=2;
+      var z=3;
+      function Mul(a,b,c){
+        console.log(a * b * c);
+        
+      }
+      Mul(x,y,z);
 
       // Create a Function called "isString" that takes three arguments (x, y, z).
       // "isString" determines if all three arguments are strings and logs an appropriate response to the console.
-
-
+      var x=1;
+      var y="y";
+      var z=3;
+      function isstring(a,b,c){
+        if(typeof a === 'string')
+        {console.log("is string");}
+        else{ console.log("is not"); }
+        if(typeof b === 'string')
+        {console.log("is string");}
+        else{ console.log("is not"); }
+        if(typeof c === 'string')
+        {console.log("is string");}
+        else{ console.log("is not"); }       
+      }
+      isstring(x,y,z);
       // Create a Function called "vowelChecker" that takes in a single argument (x).
       // "vowlChecker" logs whether or not the input is a vowel.
-
+      var x=1;
+      var y="y";
+      var z="U";
+      function isstring(a,b,c){
+        if( a == "A" || a == "E" || a == "I" || a == "O" || a == "U")
+        {console.log("is vowel");}
+        else{ console.log("is not"); }
+        if( b == "A" || b == "E" || b == "I" || b == "O" || b == "U")
+        {console.log("is vowel");}
+        else{ console.log("is not"); }
+        if( c == "A" || c == "E" || c == "I" || c == "O" || c == "U")
+        {console.log("is vowel");}
+        else{ console.log("is not"); }       
+      }
+      isstring(x,y,z);
 
       // BONUS
       // Creates a version of "adder" that returns its result. Function is called "adderReturn".
-
+     
 
       // Creates a version of "multiplier" that returns its result. Function is called "multiplierReturn".
 
@@ -41,8 +83,9 @@
 
       // Add in the lines of code below necessary to call the functions we created above.
 
-
+         adder(1,2,3);
       // Call the adder function here.
+      Mul(1,2,3);
 
 
       console.log("-------------------");

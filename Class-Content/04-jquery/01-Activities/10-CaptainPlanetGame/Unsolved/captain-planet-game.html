@@ -90,6 +90,7 @@
               <button class="btn btn-dark btn-lg fa fa-arrow-left left-button">Left</button>
               <button class="btn btn-dark btn-lg fa fa-arrow-down down-button">Down</button>
               <button class="btn btn-dark btn-lg fa fa-arrow-right right-button">Right</button>
+              <button class="btn btn-dark btn-lg fa fa-arrow-right clone">Clone</button>
             </div>
             <br>
             <div class="text-center">
@@ -133,9 +134,18 @@
     }).on("click", ".grow-button", function() {
       captainPlanet.animate({ height: "500px" });
     }).on("click", ".shrink-button", function() {
-      captainPlanet.animate({ height: "100px" });
+      captainPlanet.animate({ height: "10zz0px" });
+    }).on("click", ".stretch-btn", function() {
+      captainPlanet.animate({ height: "1000px" });
+    }).on("click", ".unstretch-btn", function() {
+      captainPlanet.animate({ width: "300px" });
     });
 
+
+// clone
+$("#moveControls").on("click", ".clone", function() {
+      $("col-lg-6").appendChild(Assets/captain-planet.jpg) });
+      
     // Visibility Buttons
     $("#visibilityControls").on("click", ".vis-button", function() {
       captainPlanet.animate({ opacity: "1" });
