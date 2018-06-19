@@ -5,6 +5,9 @@
 // ==========================================================
 
 // Create a basic variable
+var name="yash";
+var number= 7;
+var isgood = true;
 
 
 
@@ -14,10 +17,10 @@
 
 // Create an array of five strings
 
-
-
+var cars=["a","b","c","d","e"];
 
 // Create an array of five numbers
+var number= [ 1, 2 ,3];
 
 
 

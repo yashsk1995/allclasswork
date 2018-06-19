@@ -71,16 +71,23 @@
       //  STEP ONE:
 
       //  Declare and initialize a variable named randomNumber to either 0 or 1. Make it random.
-
+              var computerGuess= Math.floor(Math.random() * 2);
+              console.log(computerGuess);
       //  STEP TWO:
 
       //  If randomNumber is equal to zero then:
-
+            if(computerGuess=== 0)
+            {
+              $("#coin-image").html("<img src='http://random-ize.com/coin-flip/us-quarter/us-quarter-front.jpg'/>");
+            }
       //  Find the div with an id of coin-image.
       //  Replace its html with an img tag containing this image:
       //  http://random-ize.com/coin-flip/us-quarter/us-quarter-front.jpg
 
       // Else:
+      else{
+        $("#coin-image").html("<img src='http://random-ize.com/coin-flip/us-quarter/us-quarter-back.jpg'/>");
+      }
 
       //  Find the div with an id of coin-image.
       //  Replace its html with an img tag containing this image:
@@ -89,13 +96,23 @@
       //  STEP THREE:
 
       // If result is equal to randomNumber, do the following:
+        if(result === computerGuess)
+        {
+          wins++;
+          $("#win-lose").html("<h2>Winner</h2>");
+          $("#wins").html(wins);
 
+        }
       //  Increment wins by one.
       //  Find the div with an id of win-lose. Update it with an h2 of "Winner!"
       //  Find the div with an id of wins. Update it with the value of the wins variable.
 
       // Else:
-
+else{
+          losses++;
+          $("#win-lose").html("<h2>Loser</h2>");
+          $("#losses").html(losses);
+}
       //  Increment losses by one.
       //  Find the div with an id of win-lose. Update it with an h2 of "Loser!"
       //  Find the div with an id of losses. Update it with the value of the losses variable.
@@ -113,7 +130,10 @@
     $("#tails").on("click", function() {
 
       //  STEP FOUR:
-
+          tailsCount++;
+          $("#tails-chosen").text(tailsCount);
+          $("#guess").html("Tails");
+          flipThatCoin(1);
       //  Increment tailsCount by one.
       //  Find the span with an id of tails-chosen. Replace the html inside of the span with the tailsCount.
       //  Find the div with an id of guess. Update it with the word "Tails" bolded.

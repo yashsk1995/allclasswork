@@ -38,6 +38,29 @@
         // Here we construct our URL
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
+         $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+      console.log(response);
+      
+      
+      var name = response.Title;
+      var pos= response.Poster;
+      var year = response.Year;
+      var imdb =response.imdbRating;
+
+      $("#movie-view").html("<p> Title :"+name +"<br> Year :"+year +"<br> IMDB Ratting :"+ imdb+"</p>");
+     var img= "<img src =" + pos + "/>"
+      $("#movie-view").append(img);
+
+              
+     
+    });
+
+  });
+
+
         // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
         // and display it in the div with an id of movie-view
 
@@ -48,7 +71,7 @@
         // CODE GOES HERE
 
         // =================================================================
-      });
+    
     </script>
   </div>
 </body>

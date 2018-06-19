@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Favorite Movies</title>
@@ -18,8 +17,9 @@
 
   <div class="container">
     <h1>Movie Search</h1>
+    
 
-     <!-- Rendered Buttons will get Dumped Here  -->
+    <!-- Buttons will Get Dumped Dere -->
     <div id="buttons-view"></div>
 
     <form id="movie-form">
@@ -29,23 +29,68 @@
       <!-- Button triggers new movie to be added -->
       <input id="add-movie" type="submit" value="Add a Movie Bro">
     </form>
+<div id="movie-view"></div>
+<div id="movie-view1"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
       var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
 
-      // Generic function for capturing the movie name from the data-attribute
-      function alertMovieName() {
-        alert($(this).attr('data-name'));         // YOUR CODE GOES HERE!!!
+      // Function for dumping the JSON content for each button into the div
+      function displayMovieInfo() {
 
+        // YOUR CODE GOES HERE!!! HINT: You will need to create a new div to hold the JSON.
+
+movie = $(this).attr('data-name');
+
+var api="xTM3IzCHa4g2qTL7YkpTyIm4Sym7U4v1";
+        
+        var giffiURL = "http://api.giphy.com/v1/gifs/search?q="+movie+"&api_key="+api+ "&limit=5";
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+
+  $.ajax({
+  url: giffiURL,  
+method: "GET"
+}).then(function(response) {
+    console.log(response);
+console.log(response.data[0].embed_url);
+
+var pos1 = response.data[0].embed_url;
+
+var img1= "<img src =" + pos1 + "/>";
+$("#movie-view1").html(img1);
+});
+
+
+
+  $.ajax({
+  url: queryURL,  
+method: "GET"
+}).then(function(response) {
+console.log(response);
+
+
+var name = response.Title;
+var pos= response.Poster;
+var year = response.Year;
+var imdb =response.imdbRating;
+
+$("#movie-view").html("<p> Title :"+name +"<br> Year :"+year +"<br> IMDB Ratting :"+ imdb+"</p>");
+var img= "<img src =" + pos + "/>";
+$("#movie-view").append(img);
+});
+
+
+ 
       }
 
       // Function for displaying movie data
       function renderButtons() {
 
-        // Deleting the movies prior to adding new movies
-        // (this is necessary otherwise we will have repeat buttons)
+        // Deleting the buttons prior to adding new movies
+        // (this is necessary otherwise you will have repeat buttons)
         $("#buttons-view").empty();
 
         // Looping through the array of movies
@@ -54,13 +99,13 @@
           // Then dynamicaly generating buttons for each movie in the array
           // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
           var a = $("<button>");
-          // Adding a class
+          // Adding a class of movie to our button
           a.addClass("movie");
-          // Added a data-attribute
+          // Adding a data-attribute
           a.attr("data-name", movies[i]);
-          // Provided the initial button text
+          // Providing the initial button text
           a.text(movies[i]);
-          // Added the button to the HTML
+          // Adding the button to the buttons-view div
           $("#buttons-view").append(a);
         }
       }
@@ -77,15 +122,12 @@
 
         // Calling renderButtons which handles the processing of our movie array
         renderButtons();
+
       });
 
-      // Function for displaying the movie info
-      // We're adding a click event listener to all elements with the class "movie"
-      // We're adding the event listener to the document itself because it will
-      // work for dynamically generated elements
-      // $(".movies").on("click") will only add listeners to elements that are on the page at that time
-      $(document).on("click", ".movie", alertMovieName);
-      
+      // Generic function for displaying the movieInfo
+      $(document).on("click", ".movie", displayMovieInfo);
+  
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
     </script>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Favorite Movies</title>
@@ -18,6 +17,7 @@
 
   <div class="container">
     <h1>Movie Search</h1>
+    
 
     <!-- Buttons will Get Dumped Dere -->
     <div id="buttons-view"></div>
@@ -29,7 +29,7 @@
       <!-- Button triggers new movie to be added -->
       <input id="add-movie" type="submit" value="Add a Movie Bro">
     </form>
-
+<div id="movie-view"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
@@ -40,6 +40,32 @@
 
         // YOUR CODE GOES HERE!!! HINT: You will need to create a new div to hold the JSON.
 
+movie = $(this).attr('data-name');
+
+
+        
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+  $.ajax({
+  url: queryURL,  
+method: "GET"
+}).then(function(response) {
+console.log(response);
+
+
+var name = response.Title;
+var pos= response.Poster;
+var year = response.Year;
+var imdb =response.imdbRating;
+
+$("#movie-view").html("<p> Title :"+name +"<br> Year :"+year +"<br> IMDB Ratting :"+ imdb+"</p>");
+var img= "<img src =" + pos + "/>"
+$("#movie-view").append(img);
+});
+
+        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+ 
       }
 
       // Function for displaying movie data
@@ -83,7 +109,7 @@
 
       // Generic function for displaying the movieInfo
       $(document).on("click", ".movie", displayMovieInfo);
-
+  
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
     </script>

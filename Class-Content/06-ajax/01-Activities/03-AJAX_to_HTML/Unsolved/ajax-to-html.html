@@ -27,20 +27,96 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
     // The below code fills in the first row of the table
-    var movie = "Mr. Nobody";
+  var movies = ["race","war","lion king"];
+  movies.forEach(function(movie){
+
+
     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
+      console.log(response);
+       var table= $(".table");
+      var moviename=  response.Title;
+      var year = response.Year;
+      var Actors= response.Actors;
 
       // Obtain a reference to the tbody element in the DOM
+        table.append("<tr><td>"+ moviename +"</td><td>"+year+"</td><td>"+ Actors +"</td></tr>");
+        
       // Create and save a reference to new empty table row
       // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
       // Append the td elements to the new table row
       // Append the table row to the tbody element
     });
+
+  });
+
+    // var movie ="war";
+    // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function(response) {
+    //   console.log(response);
+    //    var table= $(".table");
+    //   var moviename=  response.Title;
+    //   var year = response.Year;
+    //   var Actors= response.Actors;
+
+      // Obtain a reference to the tbody element in the DOM
+        // table.append("<tr><td>"+ moviename +"</td><td>"+year+"</td><td>"+ Actors +"</td></tr>");
+        
+      // Create and save a reference to new empty table row
+      // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
+      // Append the td elements to the new table row
+      // Append the table row to the tbody element
+    // });
+    // var movie ="infinity war";
+    // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function(response) {
+    //   console.log(response);
+    //    var table= $(".table");
+    //   var moviename=  response.Title;
+    //   var year = response.Year;
+    //   var Actors= response.Actors;
+
+      // Obtain a reference to the tbody element in the DOM
+        // table.append("<tr><td>"+ moviename +"</td><td>"+year+"</td><td>"+ Actors +"</td></tr>");
+        
+      // Create and save a reference to new empty table row
+      // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
+      // Append the td elements to the new table row
+      // Append the table row to the tbody element
+    // });
+    // var movie ="race";
+    // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function(response) {
+    //   console.log(response);
+    //    var table= $(".table");
+    //   var moviename=  response.Title;
+    //   var year = response.Year;
+    //   var Actors= response.Actors;
+
+      // Obtain a reference to the tbody element in the DOM
+        // table.append("<tr><td>"+ moviename +"</td><td>"+year+"</td><td>"+ Actors +"</td></tr>");
+        
+      // Create and save a reference to new empty table row
+      // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
+      // Append the td elements to the new table row
+      // Append the table row to the tbody element
+    // });
 
     // Repeat the above logic to add rows for two more movies of your choice
 

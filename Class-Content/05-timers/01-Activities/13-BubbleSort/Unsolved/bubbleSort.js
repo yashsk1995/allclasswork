@@ -67,3 +67,26 @@ var unsortedArr = [
   292, 332, 209, 244, 196, 179, 472, 279, 40, 486, 270, 185,
   181, 485, 495, 81, 169, 294, 79, 400, 92, 104, 249
 ];
+
+function bubbleSort(x) {
+  var a = x;
+  var count = 0;
+  var swap = false;
+  while (!swap) {
+    for (i = 0; i < a.length - 1; i++) {
+      if (a[i] > a[i+1]) {
+        var y = a[i];
+        var z = a[i+1];
+        a[i]= z;
+        a[i+1] = y;
+      }
+      else {
+        count++;
+      }
+    }
+    if (count === (a.length - 1)) swap = true;
+  }
+  return a;
+  }
+
+  console.log(bubbleSort(unsortedArr));
