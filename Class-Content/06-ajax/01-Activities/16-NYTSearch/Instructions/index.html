@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+    var search= "james comey";
+    var yearst="20010101";
+    var yearend ="20030101";
+
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+url += '?' + $.param({
+  'api-key': "b53b0c7971a340fcb3da44b8bef62134",
+  'q':  search,
+  'begin_date':  yearst,
+  'end_date':  yearend,
+  'fl': "headline,snippet, pub_date,web_url,news_desk"
+
+});
+$.ajax({
+  url: url,
+  method: 'GET',
+}).then(function(response) {
+  console.log(response);
+
+  console.log(response.response.docs[0].headline.main);
+  console.log(response.response.docs[0].pub_date);
+  console.log(response.response.docs[0].web_url);
+  console.log(response.response.docs[0].news_desk);
+
+    var result = response.response.docs;
+// console.log(result);
+  for(var i=0;i < result.length ;i++){
+
+      
+
+
+      console.log("Heading :" + result[i].headline.main);
+      console.log("Pub_date :" + result[i].pub_date);
+      console.log("Url :" + result[i].web_url);
+      console.log("Desk :" + result[i].news_desk);
+
+      
+  }
+
+
+  
+
+
+});
+    
+    </script>
+</body>
+</html>

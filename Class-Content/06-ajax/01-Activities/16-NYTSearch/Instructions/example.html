@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8' />
+    <script src='voicerss-tts.min.js'></script>
+</head>
+<body>
+    <p>hellow</p>
+    <script>
+        VoiceRSS.speech({
+            key: '4442bc8635d14dbbb5725c197465dc9c',
+            src: 'Hello, world!',
+            hl: 'en-us',
+            r: 0, 
+            c: 'mp3',
+            f: '44khz_16bit_stereo',
+            ssml: false
+        });
+    </script>
+
+    
+<button class="butt js--triggerAnimation" onclick="responsiveVoice.speak('The Internet is a series of tubes!');" 
+type="button" value="Play">Play</button>
+</body>
+</html>
+              

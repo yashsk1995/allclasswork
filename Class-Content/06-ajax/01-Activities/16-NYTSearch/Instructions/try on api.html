@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ny times</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+	<style type="text/css">
+		.head{
+			background: purple;
+			height: 300px;
+			width: 100%;
+			text-align: center;
+			
+		}
+
+		.form{
+			background: grey;
+			height: 600px;
+			width: 100%;
+			
+		}
+
+		.blackS{
+			background: black;
+			height: 60px;
+			width: 100%;
+			color: white;
+			
+		}
+
+		#center{
+			margin: 10%;
+			color: white;
+			font-size: 100px;
+}
+		input{
+					/* color: white; */
+					width: 100%;
+		}
+
+
+		
+
+
+
+	</style>
+
+</head>
+<body>
+      
+
+
+		<div class="head"><span id="center">New York Times Search</span></div>
+
+		<div class="container">
+
+			<p class="blackS">Search Parameters</p>
+		</div>
+			<p>Search Term:</p>
+		<div>
+			<input type="text" id="t1" name="">
+		</div>
+
+		<p>Number of records to recieve:</p>
+		<div>
+			<input type="text" id="recieve" name="">
+		</div>
+
+		<p>Start year (optional):</p>
+		<div>
+			<input type="text" id="t2" name="">
+		</div>
+
+		<p>End Year (Optioal):</p>
+		<div>
+			<input type="text" id="t3" name="">
+		</div>
+			<br>
+
+		<button id="btn">Search</button>
+		<button>Clear results</button>
+        <button id="btn1">read for me </button>
+		
+		<br>
+
+		<div id="result">result</div>
+
+		
+        <script type="text/javascript">
+                
+
+    
+
+    $("#btn").on("click",function(){
+                // alert("hi");
+              
+                var url="http://api.voicerss.org/?key=4442bc8635d14dbbb5725c197465dc9c&hl=en-us&src=Hello, world"
+                
+               
+            });
+            $.ajax({
+              url: url,
+              method: 'GET',
+            }).then(function(response) {
+              console.log(response);
+         
+            });
+
+
+
+
+
+
+
+                
+            $("#btn").on("click",function(){
+                // alert("hi");
+                var search= $("#t1").val() ;
+                // console.log(search);
+                var yearst=$("#t2").val() ;
+                var yearend =$("#t3").val() ;
+            
+                var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+            url += '?' + $.param({
+              'api-key': "b53b0c7971a340fcb3da44b8bef62134",
+              'q':  search,
+              'begin_date':  yearst,
+              'end_date':  yearend,
+              'fl': "headline,snippet, pub_date,web_url,news_desk"
+            
+            });
+            $.ajax({
+              url: url,
+              method: 'GET',
+            }).then(function(response) {
+              console.log(response);
+            
+            //   console.log(response.response.docs[0].headline.main);
+            //   console.log(response.response.docs[0].pub_date);
+            //   console.log(response.response.docs[0].web_url);
+            //   console.log(response.response.docs[0].news_desk);
+            
+                var result = response.response.docs;
+                var records = $("#recieve").val();
+            // console.log(result);
+              for(var i=0;i < records ;i++){
+                var d = $("<div>");
+                var p = $("<p>");
+                p.html("<h3>Headline : " + result[i].headline.main + "</h3><h4> <br> Pub_date :" + result[i].pub_date+
+                "<br> Url :" + result[i].web_url + "<br> Desk :" + result[i].news_desk +  "</h4>");
+                d.append(p);
+                //   console.log("Heading :" + result[i].headline.main);
+                //   console.log("Pub_date :" + result[i].pub_date);
+                //   console.log("Url :" + result[i].web_url);
+                //   console.log("Desk :" + result[i].news_desk);
+                $("#result").prepend(d);
+           
+              }
+            
+            });
+            });
+               
+                
+                </script>
+
+</body>
+</html>
