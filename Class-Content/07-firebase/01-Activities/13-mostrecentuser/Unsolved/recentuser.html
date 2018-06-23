@@ -85,25 +85,64 @@
     //  START CODING BELOW!!
 
     // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyDpGgf8o_arigyJ0PV9t_qBGunX_SUNk4U",
+    authDomain: "firstfirebase-eb036.firebaseapp.com",
+    databaseURL: "https://firstfirebase-eb036.firebaseio.com",
+    projectId: "firstfirebase-eb036",
+    storageBucket: "firstfirebase-eb036.appspot.com",
+    messagingSenderId: "869670129513"
+};
 
+firebase.initializeApp(config);
 
     // Create a variable to reference the database
 
-
+var database = firebase.database();
     // Capture Button Click
     $("#add-user").on("click", function(event) {
       // Don't refresh the page!
       event.preventDefault();
 
       // YOUR TASK!!!
+      var n = $("#name-input").val().trim();
+      var e = $("#email-input").val().trim();
+      var a = $("#age-input").val().trim();
+      var m = $("#comment-input").val().trim();
+
 
       // Code in the logic for storing and retrieving the most recent user.
-
+      database.ref().set({
+        name: n,
+        age: a,
+        email: e,
+        comment:m
+      });
       // Don't forget to provide initial data to your Firebase database.
 
     });
 
+ database.ref().on("value", function(snapshot) {
 
+// Print the initial data to the console.
+console.log(snapshot.val());
+
+// Log the value of the various properties
+console.log(snapshot.val().name);
+console.log(snapshot.val().age);
+console.log(snapshot.val().email);
+console.log(snapshot.val().comment);
+
+// Change the HTML
+$("#name-display").text(snapshot.val().name);
+$("#age-display").text(snapshot.val().age);
+$("#email-display").text(snapshot.val().email);
+$("#comment-display").text(snapshot.val().comment);
+
+// If any errors are experienced, log them to console.
+}, function(errorObject) {
+console.log("The read failed: " + errorObject.code);
+});
     // Firebase watcher + initial loader HINT: .on("value")
 
 

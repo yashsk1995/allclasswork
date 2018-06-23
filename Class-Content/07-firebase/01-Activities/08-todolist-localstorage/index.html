@@ -24,7 +24,7 @@
     <form>
       <span id="todo-item">To Do Item: <input id="to-do" type="text" ><input id="add-to-do" value="Add Item" type="submit"></span>
     </form>
-
+    <button id="display">click</button>
     <hr>
 
     <!-- To-Do List -->
@@ -39,6 +39,7 @@
 
     // Create an initial toDoCount variable
     var toDoCount = 0;
+    var it = [];
 
     //  On Click event associated with the add-to-do function
     $("#add-to-do").on("click", function(event) {
@@ -68,6 +69,7 @@
 
       // Append the button to the to do item
       toDoItem = toDoItem.prepend(toDoClose);
+        it.push=toDoItem;
 
       // Add the button and to do item to the to-dos div
       $("#to-dos").append(toDoItem);
@@ -77,8 +79,26 @@
 
       // Add to the toDoCount
       toDoCount++;
-    });
 
+    //   localStorage.clear();
+
+// Store the username into localStorage using "localStorage.setItem"
+// localStorage.setItem("id" + i, toDoItem);
+
+// And display that name for the user using "localStorage.getItem"
+// $("#to-dos").text(localStorage.getItem());
+
+    });
+    $("#display").on("click",function(){
+    
+    for (var i= 0 ; i < it.length;i++)
+        console.log(it[i]);
+
+
+    })
+    
+    // $("#to-dos").text(localStorage.getItem());
+   
     // When a user clicks a check box then delete the specific content
     // (NOTE: Pay attention to the unusual syntax here for the click event.
     // Because we are creating click events on "dynamic" content, we can't just use the usual "on" "click" syntax.)

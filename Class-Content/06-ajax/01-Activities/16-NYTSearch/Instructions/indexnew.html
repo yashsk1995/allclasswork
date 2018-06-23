@@ -90,6 +90,13 @@
 		
         <script type="text/javascript">
                 
+
+
+
+
+
+
+
             $("#btn").on("click",function(){
                 // alert("hi");
                 var search= $("#t1").val() ;
@@ -104,7 +111,8 @@
               'begin_date':  yearst,
               'end_date':  yearend,
               'fl': "headline,snippet, pub_date,web_url,news_desk"
-            
+
+              
             });
             $.ajax({
               url: url,

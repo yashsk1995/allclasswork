@@ -70,7 +70,7 @@ database.ref("/clicks").on("value", function(snapshot) {
   $("#click-value").text(snapshot.val().clickCount);
 
   // Change the HTML Value using a variable (similar to the above)
-  $("#click-value").text(clickCounter);
+  $("#click-value").text(clickCounter + "  STop THAT!!");
 
 // If any errors are experienced, log them to console.
 }, function(errorObject) {
